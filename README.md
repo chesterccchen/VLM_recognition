@@ -83,3 +83,26 @@ huggingface-cli download google/gemma-3-27b-it-qat-q4_0-gguf mmproj-model-f16-27
 ```
 ### <snapshot_hash>要改成實際的檔案位置
 ### 在4090的情況下可以全速跑，vram消耗約21G，大約20到25秒可以跑完一張醫療收據，在4080的環境下，gpu-layers只能大約設成35，剩下用cpu跑(執行時間會是原先的10倍以上!)
+
+
+
+# 跑rolmocr模型
+
+```bash
+pip install vllm
+pip install bitsandbytes
+```
+
+當執行 VLLM 命令（例如 vllm serve reducto/RolmOCR）時，可能遇到以下錯誤：
+ImportError: libcudart.so.12: cannot open shared object file: No such file or directory
+
+可以執行
+```bash
+echo 'export LD_LIBRARY_PATH=/usr/local/lib/ollama/cuda_v12:$LD_LIBRARY_PATH' >> ~/.bashrc
+source ~/.bashrc
+```
+
+
+# 跑internVL模型
+pip install decord
+pip install timm
