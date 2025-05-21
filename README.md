@@ -131,7 +131,7 @@ vllm serve reducto/RolmOCR \
   --max-num-batched-tokens 64 \
   --max-num-seqs 1 \
   --max-model-len 5000
-  --gpu-memory-utilization 0.6 #可以降低vram消耗，最低13GB的vram就可以使用
+  --gpu-memory-utilization 0.6 #可以降低vram消耗，最低13GB的vram就可以使用，在4090下不一定要使用
 ```
 
 ### 參數說明
