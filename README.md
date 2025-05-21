@@ -102,7 +102,7 @@ echo 'export LD_LIBRARY_PATH=/usr/local/lib/ollama/cuda_v12:$LD_LIBRARY_PATH' >>
 source ~/.bashrc
 ```
 
-啟動 RolmOCR server 
+在辨識之前先啟動 RolmOCR server 
 ```bash
 vllm serve reducto/RolmOCR  --quantization bitsandbytes --dtype auto --max-num-batched-tokens 64 --max-num-seqs 1   --max-model-len 5000 
 ```
@@ -116,9 +116,25 @@ vllm serve reducto/RolmOCR	啟動 vLLM 模型伺服器並載入 reducto/RolmOCR 
 
 進行醫療收據辨識
 ```bash
-python RolmOCR_medical_receipt.py
+python rolmocr_medical_receipt.py
 ```
 
+進行發票辨識
+```bash
+python rolmocr_invoice.py
+```
+
+在前端頁面進行發票辨識
+```bash
+python rolmocr_invoice_fronted_page.py
+```
+前端頁面展示:
+<table>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/55e66a2f-d606-46b7-87c7-e06c9b365023" width="700"/></td>
+    <td><img src="https://github.com/user-attachments/assets/91d3bd7e-c0e8-4d02-9766-c248f4dbedec" width="700"/></td>
+  </tr>
+</table>
 
 # 跑internVL模型
 pip install decord
