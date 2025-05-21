@@ -1,5 +1,11 @@
 # VLM_recognition
 
+# ⚠️ 注意事項
+
+- **RolmOCR 與 InternVL3 目前僅建議於 NVIDIA 4090 GPU 上執行。**
+    - 雖然在 4090 上 VRAM 可壓到 13GB 以下，但在 4080 上執行 RolmOCR 會出現只會出現「`!!!!!!!!!!!`」異常輸出，InternVL 也會出現亂碼，**目前尚未釐清原因**。
+
+---
 
 # 在CLI上 使用 LLaMA.cpp 跑 GGUF 模型（以 Gemma-3-27B 為例）
 
@@ -125,6 +131,7 @@ vllm serve reducto/RolmOCR \
   --max-num-batched-tokens 64 \
   --max-num-seqs 1 \
   --max-model-len 5000
+  --gpu-memory-utilization 0.6 #可以降低vram消耗，最低13GB的vram就可以使用
 ```
 
 ### 參數說明
@@ -137,6 +144,7 @@ vllm serve reducto/RolmOCR \
 | `--max-num-batched-tokens 64`| 每批最多處理 64 個 token                                                               |
 | `--max-num-seqs 1`          | 每次推理僅接受 1 筆請求                                                                |
 | `--max-model-len 5000`      | 設定模型最多接受的 token 長度                                                          |
+| `--gpu-memory-utilization 0.6`| 設定模型最多能使用多少的vram                                                        |
 
 ---
 
@@ -183,7 +191,10 @@ pip install accelerate
 ```bash
 python InternVL3-8B_medical_receipt.py
 ```
-
+降精度 InternVL3進行醫療收據辨識(4 bit)
+```bash
+InternVL3-8B_load_4_bit_medical_receipt.py
+```
 ### 模型效能比較表
 
 | 模型名稱 | 醫療收據辨識時間 | 表現穩定性 | 幻覺情況 | 備註 |
