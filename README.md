@@ -172,6 +172,14 @@ python rolmocr_invoice_fronted_page.py
 </table>
 
 
-# 跑internVL模型
+# InternVL 模型部署與使用說明
+```bash
 pip install decord
 pip install timm
+pip install accelerate
+```
+
+進行醫療收據辨識
+```bash
+python InternVL3-8B_medical_receipt.py
+```
