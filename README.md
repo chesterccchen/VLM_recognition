@@ -193,3 +193,5 @@ python InternVL3-8B_medical_receipt.py
 | **InternVL3** | 輸出時間大概是 rolmocr 的 1.5 倍，大多圖片都能在 15 秒以內辨識完畢 | 普通（偶爾出現連續輸出一排相同字的情況） | 比 Rolmocr 多一點 | 因為 rolmocr 有時候表格資訊會被忽略，因此有些情況下，internVL 的表格輸出會優於 rolmocr，例如 InternVL_16bit 在榮總的收據辨識上表現比 Rolmocr_16bit 來得好（InternVL3_4bit 輸出格式有誤），但整體上 Rolmocr 還是優於 InternVL3。 |
 
 ---
+
+辨識效果比較:https://miro.com/app/board/uXjVI8-si30=/
