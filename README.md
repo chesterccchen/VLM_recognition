@@ -102,6 +102,23 @@ echo 'export LD_LIBRARY_PATH=/usr/local/lib/ollama/cuda_v12:$LD_LIBRARY_PATH' >>
 source ~/.bashrc
 ```
 
+啟動 RolmOCR server 
+```bash
+vllm serve reducto/RolmOCR  --quantization bitsandbytes --dtype auto --max-num-batched-tokens 64 --max-num-seqs 1   --max-model-len 5000 
+```
+參數	說明
+vllm serve reducto/RolmOCR	啟動 vLLM 模型伺服器並載入 reducto/RolmOCR 模型。
+--quantization bitsandbytes	啟用 4-bit 壓縮（quantization）來減少記憶體使用量。使用 BitsAndBytes 函式庫。適合在記憶體有限的 GPU 上部署。
+--dtype auto	自動選擇最佳的數值精度（例如 float16、bfloat16、int8）來平衡效能與記憶體使用。
+--max-num-batched-tokens 64	控制每批（batch）最多處理的 token 數量上限。
+--max-num-seqs 1	每次推理最多只接受 1 筆請求
+--max-model-len 5000	設定模型最多接受的 token 長度。
+
+進行醫療收據辨識
+```bash
+python RolmOCR_medical_receipt.py
+```
+
 
 # 跑internVL模型
 pip install decord
