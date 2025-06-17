@@ -205,4 +205,3 @@ InternVL3-8B_load_4_bit_medical_receipt.py
 
 ---
 
-辨識效果比較:https://miro.com/app/board/uXjVI8-si30=/
